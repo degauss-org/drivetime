@@ -7,6 +7,7 @@ isochrone_files <- dir_ls(path="./isochrones")
 isochrones <- map(isochrone_files, st_read)
 names(isochrones) <- substr(names(isochrones), 25, nchar(names(isochrones)))
 names(isochrones) <- str_replace(names(isochrones), ".geojson", "")
+isochrones <- map(isochrones, st_transform, crs=5072) # reproject
 
 # work with cchmc for a bit
 cchmc <- isochrones[["cincinnati_childrens"]]
@@ -49,5 +50,5 @@ ggplot() +
   geom_sf(data = tmp, aes(fill =  drive_time), alpha=0.8) +
   scale_fill_brewer(palette = "RdYlGn", direction = -1)
 
-save(isochrones_no_overlap, file="pepr_isochrones_no_overlap.Rds")
+save(isochrones_no_overlap, file="pepr_isochrones_no_overlap_5072.Rds")
 
