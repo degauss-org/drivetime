@@ -9,7 +9,8 @@ p <- add_argument(p,'site',help='abbreviation for care center')
 args <- parse_args(p)
 
 suppressPackageStartupMessages(library(sf))
-suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(readr))
 
 selected_site <- args$site
 # selected_site <- 'cchmc' # for testing
@@ -18,7 +19,7 @@ selected_site <- args$site
 site_names <- c("chop" = "childrens_hospital_philadelphia", 
                 "riley" = "riley_childrens_indianapolis", 
                 "seattle" = "seattle_childrens", 
-                "mercy" = "childrens_mercy_kansas",  # cmh
+                "mercy" = "childrens_mercy_kansas", 
                 "emory" = "emory_univ",
                 "jhu" = "johns_hopkins",
                 "cc" = "cleveland_clinic", 
@@ -40,7 +41,6 @@ if (! selected_site %in% names(site_names)){
 
 message('\nloading and projecting input file...')
 d <- read.csv(args$file_name,stringsAsFactors=FALSE)
-# d <- read.csv("/Users/RASV5G/OneDrive\ -\ cchmc/__drivetime/my_address_file_geocoded.csv",stringsAsFactors=FALSE)
 d_orig <- d
 
 d_cc <- complete.cases(d[ ,c('lat','lon')])
@@ -63,7 +63,7 @@ d %<>%
 
 message('\nloading isochrone shape files...')
 load(file="pepr_isochrones_no_overlap_5072.Rds") # 5072 projection
-load(file="site_coords.Rds") # 5072 proj of site lat/lon
+site_coords <- readRDS(file="site_coords.Rds") # 5072 proj of site lat/lon
 
 site_name_list <- site_names[[selected_site]]
 dt_polygons <- isochrones_no_overlap[[site_name_list]]

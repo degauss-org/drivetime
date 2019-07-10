@@ -4,7 +4,7 @@
 
 ## Drive Time Isochrones
 
-This container uses isochrones to assign drive time to care center for each participant address.  Drive time isochrones are concentric polygons, in which each point inside a polygon has the same drive time to the care center. Below is an example of drive time isochrones around Cincinnati Children's Hospital.
+This container uses isochrones to assign drive time to care center for each participant address.  Drive time isochrones are concentric polygons, in which each point inside a polygon has the same drive time to the care center. Below is an example of drive time isochrones around Cincinnati Children's Hospital Medical Center.
 
 ![](figs/cchmc_isochrones_fig.png)
 
@@ -43,7 +43,7 @@ University of California, Los Angeles | `ucla`
 
 Example call:
 
-`docker run --rm=TRUE -v $PWD:/tmp quay.io/degauss/pepr_drivetime geocoded_csv_file.csv cchmc`
+`docker run --rm=TRUE -v $PWD:/tmp quay.io/degauss/pepr_drivetime:<tag> geocoded_csv_file.csv cchmc`
 
 In the above example call, replace `geocoded_csv_file.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
 
