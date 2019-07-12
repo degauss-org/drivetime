@@ -1,5 +1,6 @@
 library(RColorBrewer)
-load(file="pepr_isochrones_no_overlap_5072.Rds") # 5072 projection
+
+isochrones_no_overlap <- readRDS("pepr_isochrones_no_overlap_5072.rds") # 5072 projection
 
 site_name_list <- site_names[['cchmc']]
 drivetime_minutes <- isochrones_no_overlap[[site_name_list]]
