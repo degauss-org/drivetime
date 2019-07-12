@@ -1,6 +1,5 @@
 #!/usr/bin/Rscript
 
-setwd('/tmp')
 
 suppressPackageStartupMessages(library(argparser))
 p <- arg_parser('return drive time and distance (m) for geocoded CSV file')
