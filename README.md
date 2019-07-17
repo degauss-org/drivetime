@@ -43,10 +43,18 @@ Cincinnati Children's Hospital Medical Center | `cchmc`
 Nationwide Children's Hospital | `nat`
 University of California, Los Angeles | `ucla`
 
-Example call (that will work with example file included in repository):
+Example calls (that will work with example file included in repository):
+
+**MacOS**
 
 ```
 docker run --rm -v "$PWD":/tmp docker.pkg.github.com/cole-brokamp/pepr_drivetime/pepr_drivetime:0.3 my_address_file_geocoded.csv cchmc
+```
+
+**Microsoft Windows**
+
+```
+docker run --rm -v "%cd%":/tmp docker.pkg.github.com/cole-brokamp/pepr_drivetime/pepr_drivetime:0.3 my_address_file_geocoded.csv cchmc
 ```
 
 In the above example call, replace `geocoded_csv_file.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
