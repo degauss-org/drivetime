@@ -46,7 +46,7 @@ University of California, Los Angeles | `ucla`
 Example call (that will work with example file included in repository):
 
 ```
-docker run --rm -v "$PWD":/tmp docker.pkg.github.com/cole-brokamp/pepr_drivetime:0.3 my_address_file_geocoded.csv cchmc
+docker run --rm -v "$PWD":/tmp docker.pkg.github.com/cole-brokamp/pepr_drivetime/pepr_drivetime:0.3 my_address_file_geocoded.csv cchmc
 ```
 
 In the above example call, replace `geocoded_csv_file.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
