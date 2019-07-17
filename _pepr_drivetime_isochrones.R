@@ -77,7 +77,7 @@ d <- d %>%
   st_transform(5072)
 
 message('\nloading isochrone shape files...')
-isochrones_no_overlap <- readRDS("pepr_isochrones_no_overlap_5072.rds") # 5072 projection
+isochrones_no_overlap <- readRDS("/app/pepr_isochrones_no_overlap_5072.rds") # 5072 projection
 
 dt_polygons <-
   selected_site %>%
