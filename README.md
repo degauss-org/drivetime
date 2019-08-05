@@ -46,6 +46,12 @@ Boston Children's Hospital | `bch`
 Medical College of Wisconsin | `mcw`
 St. Jude's Children's Hospital | `stj`
 Martha Eliot Health Center | `mehc`
+Ann & Lurie Children's / Northwestern | `nwu`
+Lurie Children's Center in Northbrook | `lccn`
+Lurie Children's Center in Lincoln Park | `lcclp`
+Lurie Children's Center in Uptown | `lccu`
+Dr. Lio's and Dr. Aggarwal's Clinics | `lac`
+Recruited from Eczema Expo 2018 | `expo`
 
 Example calls (that will work with example file included in repository):
 

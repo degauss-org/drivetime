@@ -18,20 +18,27 @@ site_coords <- data.frame(
                 "childrens_mercy_kansas", "emory_univ", "johns_hopkins",
                 "cleveland_clinic", "levine_childrens_charlotte", "st_louis_childrens",
                 "oregon_health_and_science", "univ_michigan_health", "childrens_alabama",
-                "cincinnati_childrens", "nationwide_childrens", "ucla", "boston_childrens",
-                "medical_college_wisconsin", "st_jude_childrens", "martha_eliot_health"),
+                "cincinnati_childrens", "nationwide_childrens", "ucla", 
+                "boston_childrens", "medical_college_wisconsin", "st_jude_childrens", 
+                "martha_eliot_health", "northwestern", "lurie_northbrook",
+                "lurie_lincoln_park", "lurie_uptown", "lio_aggarwal_clinic",
+                "eczema_expo"),
   lat = c(39.9470417, 39.7759053, 47.6626378,
           39.0834675, 33.7894903, 39.2946548,
           41.502823, 35.2049751, 38.6374922,
           45.4978355, 42.2820339, 33.5053047,
           39.1404509, 39.9532657, 34.0650959, 
-          42.337631, 43.0423976, 35.1535979, 42.3243404),
+          42.337631, 43.0423976, 35.1535979, 
+          42.3243404, 41.8962222, 42.114789,
+          41.9287213, 41.9708717, 41.893666, 41.8882204),
   lon = c(-75.1941169, -86.1808182, -122.2854537,
           -94.5793016, -84.3289603, -76.5930753,
           -81.6239107, -80.841092, -90.2674885,
           -122.6882339, -83.7294769, -86.8080575,
           -84.5042517, -82.979289, -118.4485678, 
-          -71.1072987, -88.0262503, -90.045673, -71.1050352)
+          -71.1072987, -88.0262503, -90.045673, 
+          -71.1050352, -87.6240232, -87.8139433,
+          -87.6437675, -87.661022, -87.6404913, -87.6320096)
 ) %>%
   st_as_sf(coords = c('lon', 'lat'), crs=4326) %>%
   st_transform(crs = 5072)
@@ -55,7 +62,13 @@ site_names <- c("chop" = "childrens_hospital_philadelphia",
                 "bch" = "boston_childrens", 
                 "mcw" = "medical_college_wisconsin",
                 "stj" = "st_jude_childrens", 
-                "mehc" = "martha_eliot_health")
+                "mehc" = "martha_eliot_health",
+                "nwu" = "northwestern",
+                "lccn" = "lurie_northbrook",
+                "lcclp" = "lurie_lincoln_park",
+                "lccu" = "lurie_uptown",
+                "lac" = "lio_aggarwal_clinic",
+                "expo" = "eczema_expo")
 
 if (! selected_site %in% names(site_names)){
   stop('site argument is invalid or missing; please consult documentation for details', call. = FALSE)
