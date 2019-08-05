@@ -105,7 +105,8 @@ dt_polygons <-
   isochrones_no_overlap[[.]]
 
 message('\nfinding drive time for each point...')
-d <- st_join(d, dt_polygons)
+d <- st_join(d, dt_polygons) %>% 
+  mutate(drive_time = ifelse(is.na(drive_time), "> 60", drive_time))
 
 message('\nfinding distance (m) for each point...')
 
