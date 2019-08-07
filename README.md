@@ -10,7 +10,7 @@ This container uses isochrones to assign drive time to care center for each part
 
 ![](figs/cchmc_isochrones_fig.png)
 
-For each care center, drive times are assigned in 6-minute intervals.  Locations farther than 1 hour away will be assigned a drive time of ">60".
+For each care center, drive times are assigned in 6-minute intervals.  Locations farther than 1 hour away will be assigned a drive time of "> 60".
 
 Drive time isochrones were obtained from [openroute service](https://maps.openrouteservice.org/reach?n1=38.393339&n2=-95.339355&n3=5&b=0&i=0&j1=30&j2=15&k1=en-US&k2=km).
 
@@ -46,19 +46,25 @@ Boston Children's Hospital | `bch`
 Medical College of Wisconsin | `mcw`
 St. Jude's Children's Hospital | `stj`
 Martha Eliot Health Center | `mehc`
+Ann & Lurie Children's / Northwestern | `nwu`
+Lurie Children's Center in Northbrook | `lccn`
+Lurie Children's Center in Lincoln Park | `lcclp`
+Lurie Children's Center in Uptown | `lccu`
+Dr. Lio's and Dr. Aggarwal's Clinics | `lac`
+Recruited from Eczema Expo 2018 | `expo`
 
 Example calls (that will work with example file included in repository):
 
 **MacOS**
 
 ```
-docker run --rm -v "$PWD":/tmp degauss/pepr_drivetime:0.4 my_address_file_geocoded.csv cchmc
+docker run --rm -v "$PWD":/tmp degauss/pepr_drivetime:0.5 my_address_file_geocoded.csv cchmc
 ```
 
 **Microsoft Windows**
 
 ```
-docker run --rm -v "%cd%":/tmp degauss/pepr_drivetime:0.4 my_address_file_geocoded.csv cchmc
+docker run --rm -v "%cd%":/tmp degauss/pepr_drivetime:0.5 my_address_file_geocoded.csv cchmc
 ```
 
 In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
