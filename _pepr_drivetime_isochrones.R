@@ -23,6 +23,7 @@ site_coords <- data.frame(
                 "martha_eliot_health", "northwestern", "lurie_northbrook",
                 "lurie_lincoln_park", "lurie_uptown", "lio_aggarwal_clinic",
                 "eczema_expo"),
+>>>>>>> master
   lat = c(39.9470417, 39.7759053, 47.6626378,
           39.0834675, 33.7894903, 39.2946548,
           41.502823, 35.2049751, 38.6374922,
