@@ -58,13 +58,13 @@ Example calls (that will work with example file included in repository):
 **MacOS**
 
 ```
-docker run --rm -v "$PWD":/tmp degauss/pepr_drivetime:0.5 my_address_file_geocoded.csv cchmc
+docker run --rm -v "$PWD":/tmp degauss/pepr_drivetime:0.6 my_address_file_geocoded.csv cchmc
 ```
 
 **Microsoft Windows**
 
 ```
-docker run --rm -v "%cd%":/tmp degauss/pepr_drivetime:0.5 my_address_file_geocoded.csv cchmc
+docker run --rm -v "%cd%":/tmp degauss/pepr_drivetime:0.6 my_address_file_geocoded.csv cchmc
 ```
 
 In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
