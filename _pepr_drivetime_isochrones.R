@@ -106,7 +106,7 @@ dt_polygons <-
 
 message('\nfinding drive time for each point...')
 d <- st_join(d, dt_polygons) %>% 
-  mutate(drive_time = ifelse(is.na(drive_time), "> 60", drive_time))
+  mutate(drive_time = ifelse(!is.na(drive_time), as.character(drive_time), "> 60"))
 
 message('\nfinding distance (m) for each point...')
 
