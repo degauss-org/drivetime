@@ -73,6 +73,4 @@ Some progress messages will be printed and when complete, the program will save 
 
 ## DeGAUSS Details
 
-For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS](https://github.com/cole-brokamp/DeGAUSS) README.
-
-This software is part of DeGAUSS and uses its same [license](https://github.com/cole-brokamp/DeGAUSS/blob/master/LICENSE.txt).
+For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS](https://degauss.org) website.
