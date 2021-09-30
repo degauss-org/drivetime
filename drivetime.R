@@ -1,6 +1,6 @@
 #!/usr/local/bin/Rscript
 
-dht::greeting(geomarker_name = 'drivetime', version = '0.7', description = 'calculates drivetime to specified care center')
+dht::greeting(geomarker_name = 'drivetime', version = '1.0', description = 'calculates drivetime to specified care center')
 
 suppressPackageStartupMessages(library(argparser))
 p <- arg_parser('return drive time and distance (m) for geocoded CSV file')
@@ -76,7 +76,7 @@ d <- d %>%
 # add back in original missing coords data for output file
 out_file <- suppressWarnings(bind_rows(raw_data[!d_cc, ], d))
 
-out_file_name <- paste0(tools::file_path_sans_ext(args$file_name), '_drivetime_v0.7_', selected_site, '.csv')
+out_file_name <- paste0(tools::file_path_sans_ext(args$file_name), '_drivetime_v1.0_', selected_site, '.csv')
 
 write_csv(out_file, out_file_name)
 
