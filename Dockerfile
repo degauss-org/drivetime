@@ -1,19 +1,29 @@
-FROM rocker/geospatial:3.5.3
+FROM rocker/r-ver:4.0.4
 
-LABEL maintainer="Cole Brokamp <cole.brokamp@gmail.com>"
+# install required version of renv
+RUN R --quiet -e "install.packages('remotes', repos = 'https://cran.rstudio.com')"
+# make sure version matches what is used in the project: packageVersion('renv')
+ENV RENV_VERSION 0.14.0
+RUN R --quiet -e "remotes::install_github('rstudio/renv@${RENV_VERSION}')"
 
-RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), prompt='R > ', download.file.method = 'libcurl')" > /.Rprofile
+WORKDIR /app
 
-RUN R -e "devtools::install_version(package = 'sf', version = '0.7-3', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'argparser', version = '0.4', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'dplyr', version = '0.8.0.1', upgrade = FALSE, quiet = TRUE)"
-RUN R -e "devtools::install_version(package = 'readr', version = '1.3.1', upgrade = FALSE, quiet = TRUE)"
+RUN apt-get update \
+  && apt-get install -yqq --no-install-recommends \
+  libgdal-dev \
+  libgeos-dev \
+  libudunits2-dev \
+  libproj-dev \
+  libv8-dev \
+  && apt-get clean
 
-RUN R -e "library(sf); library(argparser); library(dplyr); library(readr)"
+COPY renv.lock .
+RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
 
-RUN mkdir /app
-COPY . /app
+COPY drivetime.R .
+COPY isochrones_no_overlap.rds .
+COPY center_addresses.csv .
 
 WORKDIR /tmp
 
-ENTRYPOINT ["/app/_pepr_drivetime_isochrones.R"]
+ENTRYPOINT ["/app/drivetime.R"]
