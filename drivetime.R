@@ -8,9 +8,14 @@ p <- add_argument(p, 'file_name', help = 'name of geocoded csv file')
 p <- add_argument(p, 'site', help = 'abbreviation for care center')
 args <- parse_args(p)
 
+old_warn <- getOption("warn")
+options(warn = -1)
+
 suppressPackageStartupMessages(library(sf))
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(readr))
+
+options(warn = old_warn)
 
 centers <- read_csv('/app/center_addresses.csv')
 # centers <- read_csv('center_addresses.csv')
