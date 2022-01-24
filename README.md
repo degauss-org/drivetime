@@ -84,18 +84,18 @@ Example calls (that will work with example file included in repository):
 **MacOS**
 
 ```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:0.7 my_address_file_geocoded.csv cchmc
+docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded.csv cchmc
 ```
 
 **Microsoft Windows**
 
 ```
-docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:0.7 my_address_file_geocoded.csv cchmc
+docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded.csv cchmc
 ```
 
 In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
 
-Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `drivetime`, the care center abbreviation, and container version number appended, e.g. `my_address_file_geocoded_drivetime_v0.7_cchmc.csv`
+Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `drivetime`, the care center abbreviation, and container version number appended, e.g. `my_address_file_geocoded_drivetime_v1.0_cchmc.csv`
 
 ## DeGAUSS Details
 
