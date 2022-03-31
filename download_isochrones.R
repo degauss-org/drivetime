@@ -1,6 +1,6 @@
 library(tidyverse)
 library(sf)
-library(openrouteservice) # remotes::install_github("GIScience/openrouteservice-r")
+# library(openrouteservice) # remotes::install_github("GIScience/openrouteservice-r")
 
 # read in geocoded facilities data
 centers <- read_csv("center_addresses.csv") %>% 
@@ -42,5 +42,9 @@ removeOverlap <- function(x) {
 isochrones_no_overlap <- map(isochrones, removeOverlap)
 names(isochrones_no_overlap) <- centers$abbreviation
 saveRDS(isochrones_no_overlap, 'isochrones_no_overlap.rds')
+
+purrr::walk(1:length(isochrones_no_overlap),
+           ~saveRDS(isochrones_no_overlap[[.x]], 
+                    glue::glue('isochrones/{names(isochrones_no_overlap)[.x]}_isochrones.rds')))
 
 

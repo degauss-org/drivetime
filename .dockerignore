@@ -3,6 +3,4 @@
 
 # except what we need
 !/renv.lock
-!/drivetime.R
-!/isochrones_no_overlap.rds
-!/center_addresses.csv
+!/entrypoint.R
