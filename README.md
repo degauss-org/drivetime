@@ -1,29 +1,24 @@
-# degauss/drivetime
+# drivetime <a href='https://degauss.org'><img src='https://github.com/degauss-org/degauss_hex_logo/raw/main/PNG/degauss_hex.png' align='right' height='138.5' /></a>
 
-> DeGAUSS container that calculates driving distance to care center
-
-## Geomarker Data
-
-### Drive Time Isochrones (`drive_time`)
-
-This container uses isochrones to assign drive time to care center for each input address.  Drive time isochrones are concentric polygons, in which each point inside a polygon has the same drive time to the care center. Below is an example of drive time isochrones around Cincinnati Children's Hospital Medical Center.
-
-![](figs/cchmc_isochrones_fig.png)
-
-For each care center, drive times are assigned in 6-minute intervals.  Locations farther than 1 hour away will be assigned a drive time of "> 60".
-
-Drive time isochrones were obtained from [openroute service](https://maps.openrouteservice.org/reach?n1=38.393339&n2=-95.339355&n3=5&b=0&i=0&j1=30&j2=15&k1=en-US&k2=km).
-
-### Distance (`distance`)
-
-This container also calculates "as the crow flies" distance (meters) from care center for each address. The distance does not take into account driving routes, but rather provides an overall metric for how far a participant lives from their care center.
+[![](https://img.shields.io/github/v/release/degauss-org/drivetime?color=469FC2&label=version&sort=semver)](https://github.com/degauss-org/drivetime/releases)
+[![container build status](https://github.com/degauss-org/drivetime/workflows/build-deploy-release/badge.svg)](https://github.com/degauss-org/drivetime/actions/workflows/build-deploy-release.yaml)
 
 ## Using
 
-DeGAUSS arguments specific to this container:
+If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
-- `file_name`: name of a CSV file in the current working directory with columns named `lat` and `lon`
-- `site`: abbreviation for care center for which you would like to obtain drive time and distance; must be from the list below
+```sh
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoded.csv cchmc
+```
+
+will produce `my_address_file_geocoded_drivetime_1.1.0_cchmc.csv` with added columns:
+
+- **`drive_time`**: drive time in minutes (6-minute intervals; "> 60" if more than 1 hour drive time)
+- **`distance`**: distance in meters
+
+### Required Argument
+
+This DeGAUSS container requires an argument to specify care center. The example above uses `cchmc` for Cincinnati Children's Hospital Medical Center. To change the care center, replace `cchmc` with one of the site abbrevations below. 
 
 | **Name** |  **Abbreviation** |
 |--------------------|-------------------|
@@ -39,7 +34,6 @@ St. Louis Children's Hospital | `stl`
 Oregon Health and Science University | `ohsu`
 University of Michigan Health System | `umich`
 Children's Hospital of Alabama | `al`
-Cincinnati Children's Hospital Medical Center | `cchmc`
 Nationwide Children's Hospital | `nat`
 University of California, Los Angeles | `ucla`
 Boston Children's Hospital | `bch`
@@ -79,24 +73,26 @@ Rainbow Babies and Children's Hospital	| `rainbow`
 UNC Hospitals Children's Specialty Clinic	| `unc`
 Barbara Bush Children's Hospital at Maine Medical	| `maine`
 
-Example calls (that will work with example file included in repository):
+## Geomarker Methods
 
-**MacOS**
+**drive time**
 
-```
-docker run --rm -v "$PWD":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded.csv cchmc
-```
+This container uses isochrones to assign drive time to care center for each input address. Drive time isochrones are concentric polygons, in which each point inside a polygon has the same drive time to the care center. Below is an example of drive time isochrones around Cincinnati Children's Hospital Medical Center.
 
-**Microsoft Windows**
+![](figs/cchmc_isochrones_fig.png)
 
-```
-docker run --rm -v "%cd%":/tmp ghcr.io/degauss-org/drivetime:1.0 my_address_file_geocoded.csv cchmc
-```
+Drive time isochrones were obtained from [openroute service](https://maps.openrouteservice.org/reach?n1=38.393339&n2=-95.339355&n3=5&b=0&i=0&j1=30&j2=15&k1=en-US&k2=km).
 
-In the above example call, replace `my_address_file_geocoded.csv` with the name of your geocoded csv file and `cchmc` with the abbreviation for the care center to be used for drive time and distance calculations.
+**distance**
 
-Some progress messages will be printed and when complete, the program will save the output as the same name as the input file name, but with `drivetime`, the care center abbreviation, and container version number appended, e.g. `my_address_file_geocoded_drivetime_v1.0_cchmc.csv`
+Euclidean distance between input address and care center in meters. This distance does not take into account driving routes, but rather provides an overall metric for how far a participant lives from their care center.
+
+## Geomarker Data
+
+- `download_isochrones.R` was used to download and prepare drive time isochrones
+- Isochrone shape files are stored at [`s3://geomarker/drivetime/isochrones/`](https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones)
+- A list of available care center addresses is also stored at [`s3://geomarker/drivetime/center_addresses.csv`](https://geomarker.s3-us-east-2.amazonaws.com/drivetime/center_addresses.csv)
 
 ## DeGAUSS Details
 
-For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS](https://degauss.org) homepage.
+For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS homepage](https://degauss.org).
