@@ -35,7 +35,7 @@ isochrones <- readRDS(glue::glue("/app/isochrones/{selected_site}_isochrones.rds
 
 ## add code here to calculate geomarkers
 message('finding drive time for each point...')
-d$d <- st_join(d$d, isochrones) %>% 
+d$d <- suppressWarnings( st_join(d$d, isochrones, largest = TRUE) ) %>% 
   mutate(drive_time = ifelse(!is.na(drive_time), as.character(drive_time), "> 60"))
 
 message('finding distance (m) for each point...')
