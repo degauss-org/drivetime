@@ -8,7 +8,7 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
 ```sh
-docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.1.0 my_address_file_geocoded.csv cchmc
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.2.0 my_address_file_geocoded.csv cchmc
 ```
 
 will produce `my_address_file_geocoded_drivetime_1.1.0_cchmc.csv` with added columns:
@@ -22,6 +22,8 @@ This DeGAUSS container requires an argument to specify care center. The example 
 
 | **Name** |  **Abbreviation** |
 |--------------------|-------------------|
+Children's Children's Hospital Medical Center - Main Campus | `cchmc` 
+Children's Children's Hospital Medical Center - Liberty Campus | `liberty` 
 Children's Hospital of Philadelphia | `chop` 
 Riley Hospital for Children, Indiana University | `riley`
 Seattle Children's Hospital | `seattle`

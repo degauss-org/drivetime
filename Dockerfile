@@ -2,7 +2,7 @@ FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="drivetime"
-ENV degauss_version="1.1.0"
+ENV degauss_version="1.2.0"
 ENV degauss_description="distance and drive time to care sites"
 ENV degauss_argument="care_site [default: none]"
 
@@ -53,6 +53,7 @@ ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/lac_isochr
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/lcclp_isochrones.rds isochrones/lcclp_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/lccu_isochrones.rds isochrones/lccu_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/levine_isochrones.rds isochrones/levine_isochrones.rds
+ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/liberty_isochrones.rds isochrones/liberty_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/maine_isochrones.rds isochrones/maine_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/mcw_isochrones.rds isochrones/mcw_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/mehc_isochrones.rds isochrones/mehc_isochrones.rds
