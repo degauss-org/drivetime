@@ -1,6 +1,6 @@
 library(tidyverse)
 library(sf)
-# library(openrouteservice) # remotes::install_github("GIScience/openrouteservice-r")
+library(openrouteservice) # remotes::install_github("GIScience/openrouteservice-r")
 
 # read in geocoded facilities data
 centers <- read_csv("center_addresses.csv") %>% 
