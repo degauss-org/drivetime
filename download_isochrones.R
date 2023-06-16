@@ -8,7 +8,7 @@ centers <- read_csv("center_addresses.csv") %>%
 
 # download isochrones from ORS
 get_isochrones <- function(x) {
-  ors_isochrones(centers[x, c('lon', 'lat')],
+  ors_isochrones(centers[x, c('lat', 'lon')],
                  profile = 'driving-car',
                  range = 60*60,   
                  interval = 6*60,
