@@ -8,10 +8,10 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
 ```sh
-docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.2.0 my_address_file_geocoded.csv cchmc
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.3.0 my_address_file_geocoded.csv cchmc
 ```
 
-will produce `my_address_file_geocoded_drivetime_1.1.0_cchmc.csv` with added columns:
+will produce `my_address_file_geocoded_drivetime_1.3.0_cchmc.csv` with added columns:
 
 - **`drive_time`**: drive time in minutes (6-minute intervals; "> 60" if more than 1 hour drive time)
 - **`distance`**: distance in meters
@@ -74,6 +74,10 @@ A.I. duPont Hospital for Children	| `dupont`
 Rainbow Babies and Children's Hospital	| `rainbow`
 UNC Hospitals Children's Specialty Clinic	| `unc`
 Barbara Bush Children's Hospital at Maine Medical	| `maine`
+Children's Hospital of New Orleans | `chnola`
+Rady Children's Hospital | `rady`
+Children's Hospital Los Angeles |	`chla`
+Monroe Carell Jr. Children's Hospital at Vanderbilt |	`vandy`
 
 ## Geomarker Methods
 

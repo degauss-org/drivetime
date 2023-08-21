@@ -22,6 +22,7 @@ get_isochrones <- function(x) {
 #   geom_sf(data = ex[1,]) 
 
 isochrones <- mappp::mappp(1:nrow(centers), get_isochrones)
+# isochrones[[48]] <- get_isochrones(48)
 
 saveRDS(isochrones, 'isochrones/isochrones.rds')
 # isochrones <- readRDS('drivetime_distance/cf_isochrones.rds')

@@ -2,7 +2,7 @@ FROM rocker/r-ver:4.0.5
 
 # DeGAUSS container metadata
 ENV degauss_name="drivetime"
-ENV degauss_version="1.2.0"
+ENV degauss_version="1.3.0"
 ENV degauss_description="distance and drive time to care sites"
 ENV degauss_argument="care_site [default: none]"
 
