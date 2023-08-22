@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.0.5
+FROM rocker/r-ver:4.2.2
 
 # DeGAUSS container metadata
 ENV degauss_name="drivetime"
@@ -37,6 +37,8 @@ ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/atlanta_is
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/bch_isochrones.rds isochrones/bch_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/cc_isochrones.rds isochrones/cc_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/cchmc_isochrones.rds isochrones/cchmc_isochrones.rds
+ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/chla_isochrones.rds isochrones/chla_isochrones.rds
+ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/chnola_isochrones.rds isochrones/chnola_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/chop_isochrones.rds isochrones/chop_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/cnmc_isochrones.rds isochrones/cnmc_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/cohen_isochrones.rds isochrones/cohen_isochrones.rds
@@ -69,6 +71,7 @@ ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/omaha_isoc
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/packard_isochrones.rds isochrones/packard_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/palmer_isochrones.rds isochrones/palmer_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/primary_isochrones.rds isochrones/primary_isochrones.rds
+ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/rady_isochrones.rds isochrones/rady_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/rainbow_isochrones.rds isochrones/rainbow_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/riley_isochrones.rds isochrones/riley_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/seattle_isochrones.rds isochrones/seattle_isochrones.rds
@@ -82,6 +85,7 @@ ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/umich_isoc
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/unc_isochrones.rds isochrones/unc_isochrones.rds 
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/upmc_isochrones.rds isochrones/upmc_isochrones.rds
 ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/uva_isochrones.rds isochrones/uva_isochrones.rds
+ADD https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones/vandy_isochrones.rds isochrones/vandy_isochrones.rds
 COPY entrypoint.R .
 
 WORKDIR /tmp
