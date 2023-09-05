@@ -1,0 +1,9 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+*.xlsx
+isochrones/
+isochrones_no_overlap.rds
+download_isochrones.R
