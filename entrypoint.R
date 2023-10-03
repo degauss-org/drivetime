@@ -15,7 +15,7 @@ doc <- "
 opt <- docopt::docopt(doc)
 
 ## for interactive testing
-## opt <- docopt::docopt(doc, args = 'test/my_address_file_geocoded.csv')
+## opt <- docopt::docopt(doc, args = c('my_address_file_geocoded.csv', 'cchmc'))
 
 centers <- readr::read_csv('/app/center_addresses.csv')
 selected_site <- opt$site

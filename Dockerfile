@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.2.2
+FROM rocker/r-ver:4.3.0
 
 # DeGAUSS container metadata
 ENV degauss_name="drivetime"
@@ -14,7 +14,7 @@ LABEL "org.degauss.argument"="${degauss_argument}"
 
 RUN R --quiet -e "install.packages('remotes', repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
 
-RUN R --quiet -e "remotes::install_github('rstudio/renv@0.15.4')"
+RUN R --quiet -e "remotes::install_github('rstudio/renv@v1.0.2')"
 
 WORKDIR /app
 
