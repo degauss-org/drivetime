@@ -5,3 +5,4 @@
 .DS_Store
 *.xlsx
 isochrones/
+isochrones_no_overlap.rds

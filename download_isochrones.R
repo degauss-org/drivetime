@@ -47,4 +47,6 @@ purrr::walk(1:length(isochrones_no_overlap),
            ~saveRDS(isochrones_no_overlap[[.x]], 
                     glue::glue('isochrones/{names(isochrones_no_overlap)[.x]}_isochrones.rds')))
 
+system2("aws s3 cp isochrones s3://geomarker/drivetime/isochrones --recursive")
+system2("aws s3 cp center_addresses.csv s3://geomarker/drivetime/")
 
