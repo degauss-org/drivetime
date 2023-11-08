@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.0.5
+FROM rocker/r-ver:4.1.2
 
 # DeGAUSS container metadata
 ENV degauss_name="drivetime"
@@ -24,6 +24,8 @@ RUN apt-get update \
     libgeos-dev \
     libudunits2-dev \
     libproj-dev \
+    libgit2-dev \
+    libfontconfig1-dev \
     && apt-get clean
 
 COPY renv.lock .
