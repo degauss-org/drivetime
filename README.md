@@ -8,10 +8,10 @@
 If `my_address_file_geocoded.csv` is a file in the current working directory with coordinate columns named `lat` and `lon`, then the [DeGAUSS command](https://degauss.org/using_degauss.html#DeGAUSS_Commands):
 
 ```sh
-docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.3.1 my_address_file_geocoded.csv cchmc
+docker run --rm -v $PWD:/tmp ghcr.io/degauss-org/drivetime:1.3.0 my_address_file_geocoded.csv cchmc
 ```
 
-will produce `my_address_file_geocoded_drivetime_1.3.1_cchmc.csv` with added columns:
+will produce `my_address_file_geocoded_drivetime_1.3.0_cchmc.csv` with added columns:
 
 - **`drive_time`**: drive time in minutes (6-minute intervals; "> 60" if more than 1 hour drive time)
 - **`distance`**: distance in meters
@@ -78,6 +78,11 @@ Children's Hospital of New Orleans | `chnola`
 Rady Children's Hospital | `rady`
 Children's Hospital Los Angeles |	`chla`
 Monroe Carell Jr. Children's Hospital at Vanderbilt |	`vandy`
+Children’s Healthcare of Atlanta, Arthur M Blank Hospital |	`choablank`
+Children's Memorial Hermann Hospital |	`cmhh`
+Children's Hospital of New York Morgan Stanley Children's Hospital (Columbia) |	`nypcolumbia`
+Children's Hospital of New York Komansky Children's Hospital (Cornell) |	`nypcornell`
+
 
 ## Geomarker Methods
 
@@ -96,7 +101,9 @@ Euclidean distance between input address and care center in meters. This distanc
 ## Geomarker Data
 
 - `download_isochrones.R` was used to download and prepare drive time isochrones
-- Isochrone shape files and a list of available care center addresses are stored as versioned GitHub asset releases
+- Isochrone shape files are stored at [`s3://geomarker/drivetime/isochrones/`](https://geomarker.s3-us-east-2.amazonaws.com/drivetime/isochrones)
+- A list of available care center addresses is also stored at [`s3://geomarker/drivetime/center_addresses.csv`](https://geomarker.s3-us-east-2.amazonaws.com/drivetime/center_addresses.csv)
+
 ## DeGAUSS Details
 
 For detailed documentation on DeGAUSS, including general usage and installation, please see the [DeGAUSS homepage](https://degauss.org).
