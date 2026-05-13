@@ -5,7 +5,6 @@ ENV degauss_name="drivetime"
 ENV degauss_version="1.4.0"
 ENV degauss_description="distance and drive time to care sites"
 ENV degauss_argument="care_site [default: none]"
-ENV RENV_PATHS_CACHE=/tmp/renv-cache
 
 # add OCI labels based on environment variables too
 LABEL "org.degauss.name"="${degauss_name}"
@@ -34,6 +33,7 @@ RUN apt-get update \
 COPY renv.lock .
 
 RUN R -q -e "install.packages('stringi', repos='https://cloud.r-project.org')"
+RUN R -q -e "install.packages('sf', repos='https://cloud.r-project.org')"
 
 RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest'))"
 
