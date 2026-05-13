@@ -12,15 +12,18 @@ LABEL "org.degauss.version"="${degauss_version}"
 LABEL "org.degauss.description"="${degauss_description}"
 LABEL "org.degauss.argument"="${degauss_argument}"
 
-RUN R --quiet -e "install.packages('remotes', repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
-
-RUN R --quiet -e "remotes::install_github('rstudio/renv@0.15.4')"
+RUN R --quiet -e "install.packages('renv')"
 
 WORKDIR /app
 
 RUN apt-get update \
     && apt-get install -yqq --no-install-recommends \
     libgdal-dev \
+    libuv1-dev \
+    libssl-dev \
+    cmake \
+    pkg-config \
+    libabsl-dev \
     libgeos-dev \
     libudunits2-dev \
     libproj-dev \
@@ -28,9 +31,9 @@ RUN apt-get update \
 
 COPY renv.lock .
 
-RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.rstudio.com/all/__linux__/focal/latest'))"
+RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest'))"
 
-ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/center_addresses.csv center_addresses.csv
+ADD https://github.com/degauss-org/drivetime/releases/download/1.3.1/center_addresses.csv center_addresses.csv
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/al_isochrones.rds isochrones/al_isochrones.rds
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/arkansas_isochrones.rds isochrones/arkansas_isochrones.rds
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/atlanta_isochrones.rds isochrones/atlanta_isochrones.rds
@@ -86,6 +89,7 @@ ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/unc_isochro
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/upmc_isochrones.rds isochrones/upmc_isochrones.rds
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/uva_isochrones.rds isochrones/uva_isochrones.rds
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.0/vandy_isochrones.rds isochrones/vandy_isochrones.rds
+ADD https://github.com/degauss-org/drivetime/releases/download/1.3.1/choablank_isochrones.rds isochrones/choablank_isochrones.rds
 COPY entrypoint.R .
 
 WORKDIR /tmp
