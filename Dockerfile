@@ -21,6 +21,7 @@ RUN apt-get update \
     libgdal-dev \
     libuv1-dev \
     libssl-dev \
+    libicu-dev \
     cmake \
     pkg-config \
     libabsl-dev \
