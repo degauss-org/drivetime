@@ -32,6 +32,8 @@ RUN apt-get update \
 
 COPY renv.lock .
 
+RUN R -q -e "install.packages('stringi', repos='https://cloud.r-project.org')"
+
 RUN R --quiet -e "renv::restore(repos = c(CRAN = 'https://packagemanager.posit.co/cran/__linux__/jammy/latest'))"
 
 ADD https://github.com/degauss-org/drivetime/releases/download/1.3.1/center_addresses.csv center_addresses.csv
